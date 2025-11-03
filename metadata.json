@@ -1,0 +1,8 @@
+{
+  "name": "GalyaGPT",
+  "description": "An AI-powered chat application inspired by Gemini, offering a wide range of multimodal capabilities including text, image, video, and real-time audio conversations.",
+  "requestFramePermissions": [
+    "microphone",
+    "geolocation"
+  ]
+}

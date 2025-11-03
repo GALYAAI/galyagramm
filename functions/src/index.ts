@@ -1,0 +1,1 @@
+export { generateAiResponse } from './aiApi';

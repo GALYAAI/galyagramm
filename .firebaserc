@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "galyagramm"
+  },
+  "targets": {
+    "galyagramm": {
+      "hosting": {
+        "galyagramm": [
+          "galyagramm"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
