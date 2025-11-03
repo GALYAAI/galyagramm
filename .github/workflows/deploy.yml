@@ -1,0 +1,39 @@
+name: Deploy to Firebase
+
+on:
+  push:
+    # Запускать при каждом коммите в ветку 'master'
+    branches:
+      - master
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest # Чистая среда Linux без проблем Windows
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies (Root)
+      run: npm install
+
+    - name: Install dependencies (Functions)
+      run: npm install --prefix functions
+
+    - name: Build project (Frontend)
+      run: npm run build
+
+    - name: Build project (Functions)
+      run: npm --prefix functions run build
+
+    - name: Deploy to Firebase
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+        repoToken: "${{ secrets.GITHUB_TOKEN }}"
+        firebaseServiceAccount: "${{ secrets.FIREBASE_TOKEN }}"
+        projectId: galyagramm # ID вашего проекта
